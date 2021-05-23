@@ -1,0 +1,16 @@
+<header
+  [ngClass]="[
+    themeLight ? 'light-mode' : 'dark-mode',
+    isScreenSmall ? 'mobile-background' : 'desktop-background'
+  ]"
+>
+  <div class="header-container">
+    <div class="logo">
+      <h1>TODO</h1>
+    </div>
+    <div (click)="onChangeTheme()" class="toggle-theme">
+      <img *ngIf="themeLight" src="./assets/images/icon-moon.svg" alt="moon" />
+      <img *ngIf="!themeLight" src="./assets/images/icon-sun.svg" alt="sun" />
+    </div>
+  </div>
+</header>

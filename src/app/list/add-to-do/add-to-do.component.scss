@@ -1,0 +1,33 @@
+@import "src/app/shared/styles/variables";
+.light-theme {
+  background: white;
+  border-color: #ccc !important;
+}
+.dark-theme {
+  background: $Very-Dark-Desaturated-Blue;
+  color: $Very-Light-Grayish-Blue;
+  border-color: $Very-Dark-Grayish-Blue !important;
+}
+
+.add-to-do {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 5px 15px;
+
+  & .radio {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid $Very-Light-Grayish-Blue;
+  }
+  & input {
+    width: calc(100% - 25px);
+    padding: 1em;
+    outline: none;
+    border: none;
+  }
+}

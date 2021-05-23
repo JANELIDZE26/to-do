@@ -1,0 +1,66 @@
+<div class="container">
+  <app-add-to-do (addToDo)="onAdd($event)"></app-add-to-do>
+  <div
+    [ngClass]="[
+      'list-container',
+      (themeIsLight$ | async) ? 'light-theme' : 'dark-theme'
+    ]"
+  >
+    <div (cdkDropListDropped)="drop($event)" cdkDropList class="list">
+      <div
+        @fade
+        *ngFor="let todo of toDoArr | filter: filterValue; let index = index"
+        cdkDrag
+        [ngClass]="[
+          'list-item',
+          (themeIsLight$ | async) ? 'light-theme' : 'dark-theme'
+        ]"
+      >
+        <div
+          (click)="updateStatus(todo)"
+          [ngClass]="['radio', todo.status === completed ? 'checked' : '']"
+          class="radio"
+        >
+          <img
+            @fade
+            *ngIf="todo.status === completed"
+            class="check"
+            src="./assets/images/icon-check.svg"
+            alt="check"
+          />
+        </div>
+        <p [ngClass]="['value', todo.status === completed ? 'finished' : '']">
+          {{ todo.value }}
+        </p>
+        <div class="icon-cross" (click)="onDelete(todo, index)">
+          <img src="assets/images/icon-cross.svg" alt="cross" />
+        </div>
+      </div>
+    </div>
+    <div class="controllers">
+      <div class="counter">
+        <p>{{ actives }} items left</p>
+      </div>
+      <div class="clear">
+        <p (click)="onClearCompleted()">Clear Completed</p>
+      </div>
+    </div>
+  </div>
+  <div
+    [ngClass]="[
+      'filter-container',
+      (themeIsLight$ | async) ? 'light-theme' : 'dark-theme'
+    ]"
+  >
+    <ul>
+      <li routerLink="/all" [routerLinkActive]="['active-link']">All</li>
+      <li routerLink="/{{ active }}" [routerLinkActive]="['active-link']">
+        Active
+      </li>
+      <li routerLink="/{{ completed }}" [routerLinkActive]="['active-link']">
+        Completed
+      </li>
+    </ul>
+  </div>
+  <p class="instruction">Drag and Drop to reorder list</p>
+</div>

@@ -1,0 +1,53 @@
+@import "src/app/shared/styles/variables";
+
+header {
+  @mixin backgroundOptions {
+    background-size: cover;
+    padding: 5rem 0 20rem 0;
+  }
+
+  &.light-mode {
+    &.mobile-background {
+      background: url("../../assets/images/bg-mobile-light.jpg") no-repeat
+        center;
+      @include backgroundOptions;
+    }
+    &.desktop-background {
+      background: url("../../assets/images/bg-desktop-light.jpg") no-repeat
+        center;
+      @include backgroundOptions;
+    }
+  }
+
+  &.dark-mode {
+    &.mobile-background {
+      background: url("../../assets/images/bg-mobile-dark.jpg") no-repeat center;
+      @include backgroundOptions;
+    }
+    &.desktop-background {
+      background: url("../../assets/images/bg-desktop-dark.jpg") no-repeat
+        center;
+      @include backgroundOptions;
+    }
+  }
+
+  font-size: 1.6rem;
+  & .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: $width-mobile;
+    max-width: $max-width;
+    margin: auto;
+  }
+  & .toggle-theme {
+    cursor: pointer;
+  }
+
+  & .logo {
+    h1 {
+      color: white;
+      letter-spacing: 10px;
+    }
+  }
+}

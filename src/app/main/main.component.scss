@@ -1,0 +1,11 @@
+@import "src/app/shared/styles/variables";
+
+.main {
+  &.light-theme {
+    background: $Light-Grayish-Blue;
+  }
+  &.dark-theme {
+    background: $Very-Dark-Blue;
+  }
+  min-height: calc(100vh - 282px);
+}
